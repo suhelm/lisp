@@ -1,3 +1,7 @@
+ (defun consr (v a)
+   (if (null v) (cons a nil) (cons (car v) (consr  (cdr v) a))))
+
+
 (defun combine-max(a b)
   (if (not(or(null a) (null b)))
      (progn

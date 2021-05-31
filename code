@@ -1,0 +1,16 @@
+(defun combine-max(a b)
+  (if (not(or(null a) (null b)))
+     (progn
+         
+              (if (> (car a) (car b))
+                 (cons (car a) (combine-max (cdr a) (cdr b)) )
+                 (cons (car b) (combine-max (cdr a) (cdr b))))
+            
+     )
+         (progn
+                
+          (cond ((and(null a) (not(null b)))  (cons (car b)  (combine-max (cdr a) (cdr b))))
+                ((and(null b) (not(null a)))  (cons (car a)  (combine-max (cdr a) (cdr b)))))
+  )
+ )
+)

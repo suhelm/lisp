@@ -18,3 +18,48 @@
   )
  )
 )
+
+-----------------------By Manoj---------------------
+
+3---------------------------------
+(defun combine(lst1 lst2)
+    (if(null lst1)
+        lst2
+        (if(null lst2)
+            lst1
+            (if(>= (car lst1) (car lst2))
+                (cons (car lst1) (combine (cdr lst1) (cdr lst2)))
+                    (cons (car lst2) (combine (cdr lst1) (cdr lst2)))))))
+(write (combine '(1 27 3 400) '(3 5 6 7)))
+4-------------------------------
+(defun dist(a lst1)
+    (if(null lst1)
+       nil
+       (cons (append (list a) (car lst1)) (dist a (cdr lst1)))))
+(write (dist 1000 '(3 5 6 7)))
+
+5--------------------------------
+(defun removethis(lst)
+    (if(null lst)
+       nil
+       (if(member (car lst) (cdr lst))
+          (cons (car lst) (removethis (cdr lst)))
+          (removethis (cdr lst)))))
+(defun rem-if-dupl-help(lst removelst)
+    (if(null lst)
+       nil
+       (if(member (car lst) removelst)
+           (rem-if-dupl-help (cdr lst) removelst)
+           (cons (car lst) (rem-if-dupl-help (cdr lst) removelst))))
+    )
+(defun rem-if-dupl(lst)
+    (rem-if-dupl-help lst (removethis lst)))
+(write (rem-if-dupl '(3 5 6 7 5 6 7 1 3 1 2)))
+
+
+
+ 
+
+
+
+----------------------------------------------------

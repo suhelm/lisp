@@ -1,3 +1,5 @@
+ 3------ Combine max
+ 
  (defun consr (v a)
    (if (null v) (cons a nil) (cons (car v) (consr  (cdr v) a))))
 

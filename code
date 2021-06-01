@@ -25,6 +25,19 @@
 2 ---- 
 
 
+4--- alternate solution ----
+
+(defun dist (seq1 seq2)
+
+(if (null seq2)
+      nil 
+     (progn
+       
+        (cons (cons seq1 (cons (car seq2) '())) (dist seq1 (cdr seq2))))
+))
+
+
+
 -----------------------By Manoj---------------------
 
 3---------------------------------

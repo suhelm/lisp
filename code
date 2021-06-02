@@ -57,7 +57,27 @@
 1----  
 (defun consr (v a)
    (if (null v) (cons a nil) (cons (car v) (consr  (cdr v) a))))
+
+
 2 ---- 
+
+(defun fn(a)
+   (cond ((typep a 'integer) '+)
+         ( (typep  a 'cons ) 'append)))
+
+(defun sumoflist (lst)
+           (cond ((null lst) 0)
+                 (t (+ (first lst) 
+                       (sumoflist (rest lst))))))
+(defun combinelists(list1  list2)
+  (if (null list1)
+      list2
+     (cons(car list1) (combinelists (cdr list1) list2))))
+     
+(defun combine( a &rest b)
+           (cond ((eq (fn a) '+) (sumoflist (cons a b)))
+                 ((eq (fn a) 'append) (combinelists a b))))
+                 
 
 
 4--- alternate solution ----

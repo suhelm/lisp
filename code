@@ -1,3 +1,36 @@
+; custom utility functions starts
+ 
+; custom function for checking modulus
+; if remaining of divided by 2 is integer, it returns true else false
+
+(defun modc (a)
+ (if ( typep ( / a 2 ) 'integer)
+ t
+ nil))
+
+
+; custom function to reverse a list
+
+(defun revc (l)
+           (cond
+             ((null l) '())
+             (T (append (revc (cdr l)) (list (car l)))))) 
+
+
+; custom function for generating a list from given number
+; example given 3 it will return ( 1 2 3)
+
+
+(defun bsequencec (n)
+  (if (= n 0)
+  (cons 0 '())
+  (progn
+  (cons n (bsequencec(- n 1))))))
+
+; custom utility function ends
+ 
+ 
+ 
  3------ Combine max
  
  (defun consr (v a)
@@ -38,6 +71,30 @@
         (cons (cons seq1 (cons (car seq2) '())) (dist seq1 (cdr seq2))))
 ))
 
+----- 6
+
+
+; Q -6 
+; custom functions revc and modc is used
+
+(defun oseq (n)
+   (setq result '() )
+   (setf a (bsequencec n))
+
+   (setf b (revc a))
+
+       (loop for x in b collecting
+          (  progn  
+                    (if (modc x)
+                        nil
+                        (setq result (consr  result x) )) 
+          )
+        )
+      
+      result
+
+ )
+ 
 
 
 -----------------------By Manoj---------------------

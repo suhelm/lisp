@@ -119,6 +119,18 @@
 
 -----------------------By Manoj---------------------
 
+1---------------------------------
+(defun consR(lst last)
+    (if (eq (cdr lst) nil)
+        (cons (car lst) (cons last nil))
+        (cons (car lst) (consR (cdr lst) last))
+        )
+    )
+(write (consR '(1 2 3 4) '6))
+2----------------------------------
+
+
+
 3---------------------------------
 (defun combine(lst1 lst2)
     (if(null lst1)
@@ -153,11 +165,76 @@
 (defun rem-if-dupl(lst)
     (rem-if-dupl-help lst (removethis lst)))
 (write (rem-if-dupl '(3 5 6 7 5 6 7 1 3 1 2)))
+6------------------------------------------
+(defun help-oseq(n count)
+    (if (< count n)
+        (cons count (help-oseq n (+ count 2)))
+        nil
+        )
+    )
+(defun oseq(n)
+    (help-oseq n 1)
+    )
+(write (oseq 22))
+
+8---------------------------------------------------------
+(defun is-bst(lst)
+    (let ((rootvalue (car lst)))
+    (let ((leftvalue (car (car (cdr lst)))))
+    (let ((rightvalue (car (car (cdr (cdr lst))))))
+    (let ((leftlst (car (cdr lst))))
+    (let ((rightlst (car (cdr (cdr lst)))))
+    (if (eq rootvalue nil)
+        t
+    (if (and (not (or (eq leftlst nil) (eq leftlst ()))) (not (or (eq rightlst nil) (eq rightlst ()))))
+     (if (and (or (< leftvalue rootvalue) (eq leftvalue rootvalue)) (> rightvalue rootvalue)) 
+         (and (is-bst leftlst) (is-bst rightlst))
+         nil
+      )
+    (if (and (not (or (eq leftlst nil) (eq leftlst ()))) (or (eq rightlst nil) (eq rightlst ())))
+     (if (or (< leftvalue rootvalue) (eq leftvalue rootvalue))
+         (is-bst leftlst)
+         nil
+      )
+    (if (and (or (eq leftlst nil) (eq leftlst ())) (not (or (eq rightlst nil) (eq rightlst ()))))
+     (if (> rightvalue rootvalue)
+         (is-bst rightlst)
+         nil
+      )
+    (if (and (or (eq leftlst nil) (eq leftlst ())) (or (eq rightlst nil) (eq rightlst ())))
+     t
+        )))))))))))
+(write (is-bst '()))
+9---------------------------------------------------------------
+(defun tree-height(lst)
+    (if (or (eq lst nil) (eq lst ()))
+        0
+        (let ((leftheight (tree-height (car (cdr lst)))))
+             (let ((rightheight (tree-height (car (cdr (cdr lst))))))
+                  (if (or (> leftheight rightheight) (= leftheight rightheight))
+                      (+ 1 leftheight)
+                      (+ 1 rightheight)
+                      )
+                  )
+             )
+        )
+    )
+(write (tree-height '(1 (2 (10)) (3 (6) (8)))))
+10-----------------------------------------------------------------
+(defun post-order(lst)
+    (if (not (or (eq lst nil) (eq lst ())))
+        (let ((left (car (cdr lst))))
+             (let ((right (car (cdr (cdr lst)))))
+                  (post-order left)
+                  (post-order right)
+                  (write (car lst))
+                  (write-char #\Space)
+                  )
+             )
+        )
+    )
+(write (post-order '(1 (2 (10)) (3 (6) (8)))))
 
 
 
  
-
-
-
-----------------------------------------------------

@@ -197,6 +197,25 @@
     )
 (write (oseq 22))
 
+7------------------------------------------
+
+(defun filter-help(lst num)
+    (if (eq lst nil)
+        nil
+        (if (> (car lst) num)
+            (cons (car lst) (filter-help (cdr lst) num))
+            (filter-help (cdr lst) num)
+            )
+        )
+ )
+(defun filter(lst num)
+    (if (and (typep num 'integer) (typep lst 'cons))
+        (filter-help lst num)
+        nil
+     )
+    )
+(write (filter '(1 3 4) 1))
+
 8---------------------------------------------------------
 (defun is-bst(lst)
     (let ((rootvalue (car lst)))
